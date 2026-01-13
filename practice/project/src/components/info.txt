@@ -1,0 +1,5 @@
+ 
+Create 5 files in component folder (Home,About,Contact,Services,Gallery) and apply css on it , in about component put 1 image & content, and gallery component put 5 images with caption. 
+Note: Navbar and footer are common for all pages  
+React component.txt
+Displaying React component.txt.

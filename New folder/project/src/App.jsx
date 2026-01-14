@@ -1,23 +1,23 @@
-import Nav from './components/Nav';
+import Navbar from "./components/Nav";
 import Home from "./components/Home";
 import About from "./components/About";
 import Services from "./components/Services";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contect";
-import Footer  from './components/Footer';
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-       <Nav/>
-        <Home />
+      <Navbar />
+      <Home />
       <About />
       <Services />
       <Gallery />
       <Contact />
-       <Footer/>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

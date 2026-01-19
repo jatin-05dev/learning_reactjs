@@ -8,7 +8,7 @@ function Hero(pros){
 <h1>{pros.age}</h1>
 <h1>{pros.city}</h1>
 <Hero2 coursese="bca" duration ={55} /> 
-
+<h1>{pros.object.period}</h1>
 
         </>
     )

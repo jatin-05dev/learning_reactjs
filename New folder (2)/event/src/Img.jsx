@@ -18,10 +18,10 @@ function Img() {
       ></div>
 
       <button onClick={() => setImg("sample.jpeg")}>Image 1</button>
-      <button onClick={() => setImg("download (6).jpeg")}>
+      <button onClick={() => setImg("lp.jpg")}>
         Image 2
       </button>
-        <button onClick={() => setImg("download (3).jpeg")}>
+        <button onClick={() => setImg("vite.svg")}>
         Image 3
       </button>
     </div>

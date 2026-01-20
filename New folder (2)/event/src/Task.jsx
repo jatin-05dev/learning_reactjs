@@ -1,7 +1,13 @@
- import { useState } from "react";
-
+//  import { useState } from "react";
+ import { useEffect,useState } from "react"
+ 
 function Task() {
   const [color, setColor] = useState("black");
+  // useEffect(()=>alert("cybrom...."),[])
+  // useEffect(()=>alert("cybrom...."))
+  useEffect(()=>alert("cybrom...."),[color])
+
+
 
   return (
     <div>

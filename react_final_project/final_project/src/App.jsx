@@ -4,16 +4,21 @@ import Header from './Header';
 import { HeroCarousel } from './HeroCarousel';
 import CombinedStoreFront from './CombinedStoreFront';
 import StoreFront from './StoreFront';
+import NewArrivalsPage from './NewArrivalsPage';
+import ProductGrid from './ProductGrid';
 import './App.css'
 function App(){
   return (
  <>
  <Header/>
  
- <HeroCarousel/>
+ {/* <HeroCarousel/>
  <CombinedStoreFront/>
  <StoreFront/>
- <br />
+ <br /> */}
+
+ <NewArrivalsPage/>
+ <ProductGrid/>
   <Footer/>
 
  </>   

@@ -6,6 +6,8 @@ import CombinedStoreFront from './CombinedStoreFront';
 import StoreFront from './StoreFront';
 import NewArrivalsPage from './NewArrivalsPage';
 import ProductGrid from './ProductGrid';
+import LouisPhilippeHero from './LouisPhilippeHero';
+import ExtraSections from './ExtraSections';
 import './App.css'
 function App(){
   return (
@@ -16,9 +18,11 @@ function App(){
  <CombinedStoreFront/>
  <StoreFront/>
  <br /> */}
-
+{/* 
  <NewArrivalsPage/>
- <ProductGrid/>
+ <ProductGrid/> */}
+ <LouisPhilippeHero/>
+<ExtraSections/>
   <Footer/>
 
  </>   

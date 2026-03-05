@@ -8,6 +8,7 @@ import NewArrivalsPage from './NewArrivalsPage';
 import ProductGrid from './ProductGrid';
 import LouisPhilippeHero from './LouisPhilippeHero';
 import ExtraSections from './ExtraSections';
+import PremiumBrandLanding from './PremiumBrandLanding'
 import './App.css'
 function App(){
   return (
@@ -21,8 +22,9 @@ function App(){
 {/* 
  <NewArrivalsPage/>
  <ProductGrid/> */}
- <LouisPhilippeHero/>
-<ExtraSections/>
+ {/* <LouisPhilippeHero/>
+<ExtraSections/> */}
+<PremiumBrandLanding/>
   <Footer/>
 
  </>   

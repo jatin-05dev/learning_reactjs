@@ -8,6 +8,7 @@ function Home() {
         setNum(5)
     }
 
+    
     function inc() {
         setNUM2(num2+1)
     }

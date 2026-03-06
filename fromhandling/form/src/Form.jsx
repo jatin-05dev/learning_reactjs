@@ -1,5 +1,4 @@
 import { useState } from "react"
-
 function Form() {
     let [frmdata, setfrmdata] = useState({
         username: "", age: "", city: ""

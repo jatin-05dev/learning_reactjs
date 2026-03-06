@@ -4,7 +4,7 @@
 function Task() {
   const [color, setColor] = useState("black");
   // useEffect(()=>alert("cybrom...."),[])
-  // useEffect(()=>alert("cybrom...."))
+  // useEffect(()=>alert)("cybrom....")
   useEffect(()=>alert("cybrom...."),[color])
 
 

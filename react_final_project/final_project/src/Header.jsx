@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom';
 import './App.css'
 function Header (){
   return (
@@ -33,17 +34,13 @@ function Header (){
         </div>
 
        
-        <nav className="flex gap-6 text-[12px] font-bold uppercase text-gray-800">
-          <a href="#" className="hover:text-black">New In</a>
-          <a href="#" className="text-red-700">Sale</a>
-          <a href="#" className="hover:text-black">Products</a>
-          <a href="#" className="hover:text-black">Monogram</a>
-          <a href="#" className="hover:text-black">Collections</a>
-          <a href="#" className="hover:text-black">Wedding</a>
-          <a href="#" className="hover:text-black">Gift Card</a>
-        </nav>
-
-    
+     <nav className="flex gap-6 text-[12px] font-bold uppercase text-gray-800">
+  <Link to="/" className="hover:text-black">Home</Link>
+  <Link to="/new-in" className="text-red-700 hover:text-black">New In</Link>
+  <Link to="/collections" className="hover:text-black">Collections</Link>
+  <Link to="/premium" className="hover:text-black">Premium</Link>
+  <span className="cursor-pointer">Wedding</span>
+</nav>
         <div className="flex items-center gap-4">
           <div className="border-b border-black flex items-center pb-1 w-48">
             <span className="text-gray-400 mr-2">🔍</span>

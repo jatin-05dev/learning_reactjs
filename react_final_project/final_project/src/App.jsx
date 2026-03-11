@@ -14,6 +14,9 @@ import ExtraSections from './ExtraSections';
 import PremiumBrandLanding from './PremiumBrandLanding';
 import './App.css';
 
+import SignUp from './SignUp'
+import Login from './Login'
+
 // 1. Layout Component: Jo Header/Footer ko fix rakhega
 function Layout() {
   return (
@@ -57,6 +60,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="new-in" element={<NewIn />} />
+          <Route path="Sign" element={<SignUp />} />
+          <Route path="login" element={<Login />} />
           <Route path="collections" element={<Collections />} />
           <Route path="premium" element={<PremiumBrandLanding />} />
         </Route>

@@ -19,7 +19,7 @@ function Header (){
           <span className="text-gray-700">|</span>
           <span className="cursor-pointer">ⓘ CONTACT US</span>
           <span className="text-gray-700">|</span>
-          <span className="cursor-pointer">👤 LOG IN</span>
+  <Link to="/Sign" className="hover:text-black">sign</Link>
           <span className="text-gray-700">|</span>
           <span className="text-lg cursor-pointer">♡</span>
           <span className="text-lg cursor-pointer">👜</span>

@@ -1,7 +1,5 @@
  import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom';
-
-// Aapke saare imports
 import Header from './Header';
 import Footer from './Footer';
 import { HeroCarousel } from './HeroCarousel';

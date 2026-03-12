@@ -29,13 +29,7 @@ const ExtraSections = () => {
           ))}
         </div>
         
-        {/* Navigation Arrows */}
-        <button className="absolute left-12 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
-          <ChevronLeft size={20} />
-        </button>
-        <button className="absolute right-12 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
-          <ChevronRight size={20} />
-        </button>
+        
       </div>
 
       {/* --- Monogrammed Shirts Banner --- */}

@@ -1,5 +1,6 @@
  import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 function Login() {
     const [loginval, set] = useState({ email: "", password: "" })
@@ -15,17 +16,23 @@ function Login() {
         let localdata = JSON.parse(localStorage.getItem("userdata"))
         
         // Safety check if localdata exists
-        if (!localdata) {
-            alert("No user found. Please Sign Up first.")
-            navigate("/signup")
+        if (!localdata) { 
+             toast('plase sign up first',{
+    type:"error",
+    autoClose:1000})
+            navigate("/SignUp")
             return
         }
 
         if (loginval.email !== localdata.email || loginval.password !== localdata.password) {
-            alert("Invalid Credentials")
+                toast( 'user not found',{
+    type:"error",
+    autoClose:1000})
         } else {
-            alert("Login Successful")
-            navigate("/HeroCarousel")
+                toast('login succesful',{
+    type:"success",
+    autoClose:1000})
+            navigate("/new-in")
         }
     }
 

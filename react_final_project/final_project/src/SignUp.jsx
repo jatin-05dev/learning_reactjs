@@ -1,5 +1,6 @@
  import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 function Sign() {
     const [sign, set] = useState({
@@ -9,6 +10,7 @@ function Sign() {
         password: ""
     })
 
+    toast()
     const navigate = useNavigate()
 
     function inputdata(e) {
@@ -16,12 +18,43 @@ function Sign() {
         set({ ...sign, [name]: value })
     }
 
-    function handle(e) {
-        e.preventDefault()
-        localStorage.setItem("userdata", JSON.stringify(sign))
-        navigate("/login")
+function handle(e) {
+    e.preventDefault()
+
+    // Name validation
+    if(sign.name.trim().length < 3){
+        toast("Name must be at least 3 characters")
+        return
     }
 
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if(!emailPattern.test(sign.email)){
+        toast("Enter valid email")
+        return
+    }
+
+    // Age validation
+    if(sign.age < 18){
+        toast("Age must be 18+")
+        return
+    }
+
+    // Password validation
+    if(sign.password.length < 6){
+        toast("Password must be at least 6 characters")
+        return
+    }
+
+    localStorage.setItem("userdata", JSON.stringify(sign))
+
+    toast("Sign up successful",{
+        type:"success",
+        autoClose:1000
+    })
+
+    navigate("/login")
+}
     return (
         <div className="min-h-screen bg-[#f8f8f8] flex items-center justify-center p-6">
             <div className="max-w-md w-full bg-white p-10 shadow-sm border border-gray-100 transition-all hover:shadow-md">

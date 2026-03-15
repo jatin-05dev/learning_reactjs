@@ -1,0 +1,24 @@
+{
+  "orders": [
+    {
+      "id": "faae",
+      "customerName": "Jatin",
+      "customerEmail": "jattfact@gmail.com",
+      "productName": "Pink Solid Shirt",
+      "productPrice": "2,625",
+      "productImage": "k.webp",
+      "productId": 101,
+      "date": "3/15/2026, 5:54:03 PM"
+    },
+    {
+      "id": "22a9",
+      "customerName": "Jatin",
+      "customerEmail": "jattfact@gmail.com",
+      "productName": "Navy Stripe Shirt",
+      "productPrice": "2,625",
+      "productImage": "https://images.clothes.com/navy-shirt.jpg",
+      "productId": 103,
+      "date": "3/15/2026, 5:58:54 PM"
+    }
+  ]
+}

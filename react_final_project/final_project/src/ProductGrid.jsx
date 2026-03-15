@@ -1,110 +1,100 @@
-import React from 'react';
-import { Heart, RotateCw } from 'lucide-react';
+ import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductGrid = () => {
+  const navigate = useNavigate();
+
+  // LocalStorage se user check karo
+  const savedUser = localStorage.getItem('userdata');
+  const user = savedUser ? JSON.parse(savedUser) : null;
+
+  // --- DETAIL PAGE NAVIGATION ---
+  const handleProductClick = (product) => {
+    // 1. Product ki saari detail (img, name, price) LocalStorage mein save kar di
+    localStorage.setItem('currentProduct', JSON.stringify(product));
+
+    // 2. Navigate karte waqt state bhi bhej rahe hain (Double safety ke liye)
+    navigate(`/ProductDetail/${product.id}`, { 
+      state: { 
+        product: product,
+        user: user 
+      } 
+    });
+  };
+
+  // --- BAG UPDATE LOGIC ---
+  const handleAddToBag = (e) => {
+    e.stopPropagation(); 
+    const currentCount = parseInt(localStorage.getItem('bagCount') || '0');
+    localStorage.setItem('bagCount', currentCount + 1);
+    window.dispatchEvent(new Event("storage_changed"));
+    alert("Added to bag!");
+  };
+
+  // Product Data
   const products = [
-    {
-      id: 1,
-      image: "pink-shirt-url", // Replace with real image
-      tag: "JUST IN",
-      category: "CASUAL SHIRTS",
-      title: "Men Pink Solid Half Sleeves Casua...",
-      price: "2,625",
-      color: "Pink",
-      colorHex: "#f472b6",
-      sizes: [38, 39, 40, 42, 44, 46],
-      outOfStockSizes: [38, 46]
-    },
-    {
-      id: 2,
-      image: "shoes-url",
-      category: "CASUAL SHOES",
-      title: "Men Brown Lace Up Shoes",
-      price: "5,999",
-      color: "Brown",
-      colorHex: "#78350f"
-    },
-    {
-      id: 3,
-      image: "brown-stripe-url",
-      category: "CASUAL SHIRTS",
-      title: "Men Brown Stripe Half Sleeves Ca...",
-      price: "2,625",
-      color: "Brown",
-      colorHex: "#713f12"
-    },
-    {
-      id: 4,
-      image: "navy-stripe-url",
-      category: "CASUAL SHIRTS",
-      title: "Men Navy Stripe Half Sleeves Cas...",
-      price: "2,625",
-      color: "Navy",
-      colorHex: "#1e3a8a"
-    }
+    { id: 101, category: "CASUAL SHIRT", name: "Pink Solid Shirt", price: "2,625", color: "pink", img: "k.webp" },
+    { id: 102, category: "SHOES", name: "Brown Lace Up Shoes", price: "5,999", color: "brown", img: "k.webp" },
+    { id: 103, category: "CASUAL SHIRT", name: "Navy Stripe Shirt", price: "2,625", color: "navy", img: "https://images.clothes.com/navy-shirt.jpg" },
+    { id: 104, category: "CASUAL SHIRT", name: "Brown Stripe Shirt", price: "2,625", color: "#713f12", img: "https://images.clothes.com/brown-stripe.jpg" },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-8 bg-white">
-      {products.map((product) => (
-        <div key={product.id} className="group cursor-pointer">
-          {/* Image Container */}
-          <div className="relative aspect-[3/4] bg-gray-100 overflow-hidden mb-3">
-            {/* Just In Tag */}
-            {product.tag && (
-              <span className="absolute top-0 left-0 bg-black text-white text-[10px] font-bold px-2 py-1 z-10">
-                {product.tag}
-              </span>
-            )}
+    <div style={{ fontFamily: 'sans-serif', padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+      
+      <div style={{ background: '#f4f4f4', padding: '40px', textAlign: 'center', marginBottom: '30px', borderRadius: '8px' }}>
+        <h1 style={{ margin: '0', fontSize: '24px' }}>NEW SUMMER SALE</h1>
+        <p style={{ color: '#666' }}>Flat 50% Off on all shirts</p>
+      </div>
+
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+        gap: '20px' 
+      }}>
+        
+        {products.map((item) => (
+          <div 
+            key={item.id} 
+            onClick={() => handleProductClick(item)} 
+            style={{ border: '1px solid #eee', padding: '10px', cursor: 'pointer', transition: '0.3s' }}
+          >
+            <div style={{ 
+              background: '#eee', 
+              height: '250px', 
+              marginBottom: '10px',
+              backgroundImage: `url(${item.img})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}></div>
+
+            <p style={{ fontSize: '10px', color: '#999', margin: '0' }}>{item.category}</p>
+            <h3 style={{ fontSize: '14px', margin: '5px 0' }}>{item.name}</h3>
+            <p style={{ fontWeight: 'bold', margin: '5px 0' }}>₹ {item.price}</p>
             
-            {/* Wishlist Icon */}
-            <button className="absolute top-3 right-3 z-10">
-              <Heart size={20} className="text-gray-600 hover:fill-red-500 hover:text-red-500 transition-colors" />
-            </button>
-
-            {/* Product Image (Placeholder) */}
-            <div className="w-full h-full bg-[#E5E5E5] flex items-center justify-center text-gray-400">
-               {/* <img src={product.image} alt={product.title} className="object-cover w-full h-full" /> */}
-               Image Here
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '10px' }}>
+              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: item.color }}></div>
+              <span style={{ fontSize: '11px' }}>{item.color}</span>
             </div>
 
-            {/* Size Overlay (Only for Shirts/Items with sizes) */}
-            {product.sizes && (
-              <div className="absolute bottom-0 left-0 w-full bg-white/90 py-3 flex justify-center gap-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                {product.sizes.map((size) => (
-                  <span 
-                    key={size} 
-                    className={`text-xs ${product.outOfStockSizes?.includes(size) ? 'text-gray-300 line-through' : 'text-gray-800'}`}
-                  >
-                    {size}
-                  </span>
-                ))}
-              </div>
-            )}
+            <button onClick={handleAddToBag} style={btnStyle}>ADD TO BAG</button>
           </div>
-
-          {/* Product Details */}
-          <div className="space-y-1">
-            <div className="flex justify-between items-start">
-              <p className="text-[10px] text-gray-500 uppercase tracking-wider">{product.category}</p>
-              <RotateCw size={14} className="text-gray-400" />
-            </div>
-            <h3 className="text-sm text-gray-800 font-medium truncate">{product.title}</h3>
-            <p className="text-sm font-bold">₹ {product.price}</p>
-            
-            {/* Color Dot */}
-            <div className="flex items-center gap-2 mt-2">
-              <span 
-                className="w-3 h-3 rounded-full border border-gray-200" 
-                style={{ backgroundColor: product.colorHex }}
-              ></span>
-              <span className="text-[11px] text-gray-500">{product.color}</span>
-            </div>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
+};
+
+const btnStyle = {
+  width: '100%',
+  padding: '8px',
+  backgroundColor: 'black',
+  color: 'white',
+  border: 'none',
+  fontSize: '11px',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  letterSpacing: '1px'
 };
 
 export default ProductGrid;

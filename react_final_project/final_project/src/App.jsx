@@ -11,8 +11,9 @@ import './App.css';
 import SignUp from './SignUp'
 import Login from './Login'
 import Layout from './Layout';
-
-
+import ProductDetail from './ProductDetail';
+import Invoice from './Invoice';
+import Myorder from './Myorder';
 const Home = () => (
   <>
     <HeroCarousel />
@@ -44,7 +45,10 @@ function App() {
           <Route path="new-in" element={<NewIn />} />
           <Route path="Sign" element={<SignUp />} />
           <Route path="login" element={<Login />} />
+          <Route path="/productDetail/:id" element={<ProductDetail />} />
+          <Route path="Invoice" element={<Invoice />} />
           <Route path="collections" element={<Collections />} />
+          <Route path="Myorder" element={<Myorder />} />
           <Route path="premium" element={<PremiumBrandLanding />} />
         </Route>
       </Routes>

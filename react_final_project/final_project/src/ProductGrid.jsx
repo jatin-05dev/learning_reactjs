@@ -34,7 +34,7 @@ const ProductGrid = () => {
   // Product Data
   const products = [
     { id: 101, category: "CASUAL SHIRT", name: "Pink Solid Shirt", price: "2,625", color: "pink", img: "k.webp" },
-    { id: 102, category: "SHOES", name: "Brown Lace Up Shoes", price: "5,999", color: "brown", img: "k.webp" },
+    { id: 102, category: "SHOES", name: "Brown Lace Up Shoes", price: "5,999", color: "brown", img:"download.jpeg" },
     { id: 103, category: "CASUAL SHIRT", name: "Navy Stripe Shirt", price: "2,625", color: "navy", img: "https://images.clothes.com/navy-shirt.jpg" },
     { id: 104, category: "CASUAL SHIRT", name: "Brown Stripe Shirt", price: "2,625", color: "#713f12", img: "https://images.clothes.com/brown-stripe.jpg" },
   ];

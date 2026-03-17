@@ -1,7 +1,9 @@
  import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { toast } from "react-toastify"
 
 const Invoice = () => {
+  toast()
   const [lastOrder, setLastOrder] = useState(null);
   const [editingOrder, setEditingOrder] = useState(null);
 
@@ -16,6 +18,7 @@ const Invoice = () => {
         setLastOrder(latest);
       }
     } catch (error) {
+      
       console.error("Error fetching order:", error);
     }
   };
@@ -25,10 +28,14 @@ const Invoice = () => {
   }, []);
 
   const handleCancel = async (id) => {
-    if (window.confirm("Kyan aap ye order cancel karna chahte hain?")) {
+    if (window.confirm("are you sure")) {
       await axios.delete(`${API_URL}/${id}`);
       setLastOrder(null);
-      alert("Order Deleted!");
+        toast("orederd deleted",{
+        type:"success",
+        autoClose:1000
+    })
+
     }
   };
 
@@ -36,11 +43,20 @@ const Invoice = () => {
     e.preventDefault();
     try {
       await axios.put(`${API_URL}/${editingOrder.id}`, editingOrder);
-      alert("Order Updated!");
+      
+        toast("order updated",{
+        type:"success",
+        autoClose:1000
+    })
+
       setLastOrder(editingOrder); // UI par turant badlav dikhega
       setEditingOrder(null);
     } catch (error) {
-      alert("Update failed!");
+       toast("update failded",{
+        type:"error",
+        autoClose:1000
+    })
+
     }
   };
 

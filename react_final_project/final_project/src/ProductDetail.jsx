@@ -1,8 +1,12 @@
  import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify"
+
 
 const ProductDetail = () => {
+    toast()
+
   const navigate = useNavigate();
 
   // 1. LocalStorage se Product aur User dono ka data nikalna
@@ -26,7 +30,11 @@ const ProductDetail = () => {
   const handleBuyNow = async () => {
     // Pehle check karo user login hai ya nahi
     if (!user) {
-      alert("Please Sign In to Buy!");
+        toast("please sign up to buy",{
+        type:"error ",
+        autoClose:1000
+    })
+
       navigate('/Sign');
       return;
     }
@@ -37,7 +45,7 @@ const ProductDetail = () => {
       customerEmail: user.email,
       productName: product.name,
       productPrice: product.price,
-      productImage: product.img, // LocalStorage wali image key
+      productImage: product.img,  
       productId: product.id,
       date: new Date().toLocaleString()
     };
@@ -46,10 +54,15 @@ const ProductDetail = () => {
       // Axios POST to json-server
       const response = await axios.post('http://localhost:3000/orders', orderData);
       
-      if (response.status === 201) {
-        alert(`Order Placed! Thank you ${user.name}`);
+    
+         toast("bokking successful",{
+        type:"success",
+        autoClose:1000
+    })
+
         navigate('/Invoice');
-      }
+        
+      
     } catch (error) {
       alert("Server error! Make sure json-server is running on port 3000");
     }
@@ -61,7 +74,7 @@ const ProductDetail = () => {
       {/* LEFT SIDE: Product Image (Coming from LocalStorage) */}
       <div style={{ flex: '1.2' }}>
          <img 
-           src={product.img} 
+           src={`/${product.img}`} 
            alt={product.name} 
            style={{ width: '100%', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} 
          />

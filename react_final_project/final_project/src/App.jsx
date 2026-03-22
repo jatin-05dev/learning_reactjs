@@ -14,6 +14,7 @@ import Layout from './Layout';
 import ProductDetail from './ProductDetail';
 import Invoice from './Invoice';
 import Myorder from './Myorder';
+import Bag from './Bag';
 const Home = () => (
   <>
     <HeroCarousel />
@@ -50,6 +51,7 @@ function App() {
           <Route path="collections" element={<Collections />} />
           <Route path="Myorder" element={<Myorder />} />
           <Route path="premium" element={<PremiumBrandLanding />} />
+          <Route path="/bag" element={<Bag />} />
         </Route>
       </Routes>
     </Router>

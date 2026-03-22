@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+ import React, { useEffect } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
@@ -22,87 +22,79 @@ const slides = [
 ]
 
 export const HeroCarousel = () => {
-  // 1. Autoplay Plugin setup (stopOnInteraction: false zaroori hai)
-  const autoplayOptions = {
-    delay: 3000, 
-    stopOnInteraction: false,
-    stopOnMouseEnter: true, // Mouse upar ho toh ruk jaye (optional)
-  }
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true }, 
-    [Autoplay(autoplayOptions)]
+    { loop: true },
+    [Autoplay({ delay: 3000 })]
   )
 
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
+  // simple functions (no useCallback)
+  function scrollPrev() {
+    if (emblaApi) {
+      emblaApi.scrollPrev()
+    }
+  }
 
-  // Optional: Check karne ke liye ki API load hui ya nahi
+  function scrollNext() {
+    if (emblaApi) {
+      emblaApi.scrollNext()
+    }
+  }
+
   useEffect(() => {
     if (emblaApi) {
-      console.log("Carousel is ready!")
+      console.log("Carousel Ready")
     }
   }, [emblaApi])
 
   return (
-    <div className="relative w-full h-[600px] group">
-      {/* Viewport (emblaRef yahan hona chahiye) */}
+    <div className="relative w-full h-[600px]">
+
       <div className="overflow-hidden h-full" ref={emblaRef}>
-        {/* Container */}
         <div className="flex h-full">
           {slides.map((slide, index) => (
-            <div className="relative flex-[0_0_100%] min-w-0 h-full" key={index}>
+            <div className="relative flex-[0_0_100%] h-full" key={index}>
+              
               <img 
                 src={slide.image} 
                 alt={slide.title}
                 className="w-full h-full object-cover"
               />
-              
-              <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white text-center p-4">
-                <h2 className="text-4xl md:text-6xl font-light tracking-[0.2em] mb-4 uppercase">
+
+              <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white text-center">
+                <h2 className="text-4xl md:text-6xl mb-4 uppercase">
                   {slide.title}
                 </h2>
-                <p className="text-lg md:text-xl font-medium mb-10 tracking-widest">
+
+                <p className="text-lg md:text-xl mb-6">
                   {slide.subtitle}
                 </p>
-                <button className="border-2 border-white bg-transparent text-white px-12 py-3 text-sm font-bold tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+
+                <button className="border px-8 py-2 hover:bg-white hover:text-black">
                   SHOP NOW
                 </button>
               </div>
+
             </div>
           ))}
         </div>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Buttons */}
       <button 
-        className="absolute left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors" 
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-white"
         onClick={scrollPrev}
       >
-        <ChevronLeft size={60} strokeWidth={1} />
+        <ChevronLeft size={40} />
       </button>
+
       <button 
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors" 
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-white"
         onClick={scrollNext}
       >
-        <ChevronRight size={60} strokeWidth={1} />
+        <ChevronRight size={40} />
       </button>
 
-      {/* Progress Bar Style Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
-        <span className="text-white text-xs font-bold tracking-tighter">01</span>
-        <div className="h-[1px] w-32 bg-white/30 relative">
-            <div className="absolute h-full bg-white w-1/3 animate-[progress_3s_infinite_linear]"></div>
-        </div>
-        <span className="text-white text-xs font-bold tracking-tighter">03</span>
-      </div>
-
-      <style jsx>{`
-        @keyframes progress {
-          0% { width: 0%; }
-          100% { width: 100%; }
-        }
-      `}</style>
     </div>
   )
 }

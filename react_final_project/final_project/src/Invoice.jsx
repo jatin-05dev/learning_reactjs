@@ -1,163 +1,192 @@
  import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Invoice = () => {
-  toast()
+
   const [lastOrder, setLastOrder] = useState(null);
   const [editingOrder, setEditingOrder] = useState(null);
 
-  const API_URL = 'http://localhost:3000/orders';
+  const navigate = useNavigate();
 
-  const fetchOrders = async () => {
-    try {
-      const response = await axios.get(API_URL);
-      if (response.data.length > 0) {
-        // Sirf array ka sabse aakhri element uthaya
-        const latest = response.data[response.data.length - 1];
-        setLastOrder(latest);
-      }
-    } catch (error) {
-      
-      console.error("Error fetching order:", error);
-    }
-  };
+  const API_URL = "http://localhost:3000/orders";
 
   useEffect(() => {
     fetchOrders();
   }, []);
 
-  const handleCancel = async (id) => {
-    if (window.confirm("are you sure")) {
-      await axios.delete(`${API_URL}/${id}`);
-      setLastOrder(null);
-        toast("orederd deleted",{
-        type:"success",
-        autoClose:1000
-    })
+  const fetchOrders = async () => {
+    const res = await axios.get(API_URL);
 
+    if (res.data.length > 0) {
+      const latest = res.data[res.data.length - 1];
+      setLastOrder(latest);
+    } else {
+      navigate("/");
     }
   };
 
+  // ❌ DELETE
+  const handleDelete = async (id) => {
+    await axios.delete(`${API_URL}/${id}`);
+
+    toast("Deleted", { type: "success" });
+
+    navigate("/");
+  };
+
+  // ✏️ UPDATE
   const handleUpdate = async (e) => {
     e.preventDefault();
-    try {
-      await axios.put(`${API_URL}/${editingOrder.id}`, editingOrder);
-      
-        toast("order updated",{
-        type:"success",
-        autoClose:1000
-    })
 
-      setLastOrder(editingOrder); // UI par turant badlav dikhega
-      setEditingOrder(null);
-    } catch (error) {
-       toast("update failded",{
-        type:"error",
-        autoClose:1000
-    })
+    await axios.put(`${API_URL}/${editingOrder.id}`, editingOrder);
 
-    }
+    setLastOrder(editingOrder);
+    setEditingOrder(null);
+
+    toast("Updated", { type: "success" });
   };
 
-  if (!lastOrder) return <h2 style={{ textAlign: 'center', marginTop: '50px' }}>No Recent Order Found.</h2>;
+  if (!lastOrder) {
+    return (
+      <h2 className="text-center mt-20 text-xl">Loading...</h2>
+    );
+  }
 
   return (
-    <div style={{ padding: '40px', fontFamily: 'sans-serif', backgroundColor: '#f4f4f4', minHeight: '100vh' }}>
-      <h2 style={{ textAlign: 'center', color: '#333', letterSpacing: '2px', marginBottom: '30px' }}>RECENT INVOICE</h2>
+    <div className="min-h-screen bg-[#f4f4f4] py-10 px-5">
 
-      {/* --- SINGLE LARGE CARD --- */}
-      <div style={singleCardStyle}>
-        <div style={{ flex: '1' }}>
+      {/* HEADER */}
+      <h1 className="text-center text-4xl font-bold mb-10 tracking-wide">
+        🧾 INVOICE
+      </h1>
+
+      {/* MAIN CARD */}
+      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden flex">
+
+        {/* IMAGE */}
+        <div className="w-1/2 bg-black">
           <img 
-            src={`/${lastOrder.productImage}`} 
-            alt="product" 
-            style={{ width: '100%', height: '500px', objectFit: 'cover' }} 
+            src={lastOrder.productImage} 
+            alt=""
+            className="w-full h-full object-cover opacity-90"
           />
         </div>
 
-        <div style={{ flex: '1', padding: '40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <p style={{ color: '#b4941f', fontWeight: 'bold', margin: '0' }}>LATEST TRANSACTION</p>
-          <h1 style={{ fontSize: '36px', margin: '10px 0' }}>{lastOrder.productName}</h1>
-          <p style={{ fontSize: '28px', fontWeight: 'bold' }}>₹ {lastOrder.productPrice}</p>
-          
-          <div style={detailBox}>
-            <p><strong>Order ID:</strong> #{lastOrder.id}</p>
-            <p><strong>Customer:</strong> {lastOrder.customerName}</p>
-            <p><strong>Email:</strong> {lastOrder.customerEmail}</p>
-            <p><strong>Date:</strong> {lastOrder.date}</p>
+        {/* DETAILS */}
+        <div className="w-1/2 p-10 flex flex-col justify-center">
+
+          <p className="text-[#C5A044] font-bold tracking-wide">
+            PREMIUM ORDER
+          </p>
+
+          <h2 className="text-3xl font-bold mt-2">
+            {lastOrder.productName}
+          </h2>
+
+          <p className="text-2xl font-bold text-[#C5A044] mt-2">
+            ₹ {lastOrder.productPrice}
+          </p>
+
+          {/* DETAILS BOX */}
+          <div className="bg-gray-50 p-5 rounded-lg mt-6 text-sm leading-7">
+            <p><b>Order ID:</b> {lastOrder.id}</p>
+            <p><b>Name:</b> {lastOrder.customerName}</p>
+            <p><b>Email:</b> {lastOrder.customerEmail}</p>
+            <p><b>Phone:</b> {lastOrder.phone}</p>
+            <p><b>City:</b> {lastOrder.city}</p>
+            <p><b>Address:</b> {lastOrder.address}</p>
+            <p><b>Date:</b> {lastOrder.date}</p>
           </div>
 
-          <div style={{ display: 'flex', gap: '15px', marginTop: '30px' }}>
-            <button onClick={() => setEditingOrder(lastOrder)} style={editBtn}>EDIT ORDER</button>
-            <button onClick={() => handleCancel(lastOrder.id)} style={cancelBtn}>CANCEL ORDER</button>
+          {/* BUTTONS */}
+          <div className="flex gap-4 mt-6">
+
+            <button 
+              onClick={() => setEditingOrder(lastOrder)}
+              className="flex-1 bg-black text-white py-3 rounded-lg font-bold hover:bg-gray-900 transition"
+            >
+              EDIT
+            </button>
+
+            <button 
+              onClick={() => handleDelete(lastOrder.id)}
+              className="flex-1 border border-red-500 text-red-500 py-3 rounded-lg font-bold hover:bg-red-500 hover:text-white transition"
+            >
+              DELETE
+            </button>
+
           </div>
+
+          {/* PRINT */}
+          <button 
+            onClick={() => window.print()}
+            className="mt-4 bg-[#C5A044] text-white py-3 rounded-lg font-bold hover:bg-[#a38330]"
+          >
+            🖨 Print Invoice
+          </button>
+
         </div>
       </div>
 
-      {/* --- EDIT FORM SECTION --- */}
+      {/* EDIT FORM */}
       {editingOrder && (
-        <div style={formContainer}>
-          <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '10px' }}>Modify Database Entry</h3>
-          <form onSubmit={handleUpdate} style={formStyle}>
-            <div>
-              <label>Product Name</label>
-              <input type="text" value={editingOrder.productName} onChange={(e) => setEditingOrder({...editingOrder, productName: e.target.value})} style={inputStyle} />
+        <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-2xl shadow-lg">
+
+          <h3 className="text-xl font-bold mb-4 border-b pb-2">
+            Edit Order
+          </h3>
+
+          <form onSubmit={handleUpdate} className="grid grid-cols-2 gap-5">
+
+            <input 
+              className="border p-3 rounded focus:ring-2 focus:ring-[#C5A044]"
+              value={editingOrder.customerName}
+              onChange={(e)=>setEditingOrder({...editingOrder, customerName:e.target.value})}
+              placeholder="Customer Name"
+            />
+
+            <input 
+              className="border p-3 rounded focus:ring-2 focus:ring-[#C5A044]"
+              value={editingOrder.productPrice}
+              onChange={(e)=>setEditingOrder({...editingOrder, productPrice:e.target.value})}
+              placeholder="Price"
+            />
+
+            <input 
+              className="border p-3 rounded focus:ring-2 focus:ring-[#C5A044]"
+              value={editingOrder.phone}
+              onChange={(e)=>setEditingOrder({...editingOrder, phone:e.target.value})}
+              placeholder="Phone"
+            />
+
+            <input 
+              className="border p-3 rounded focus:ring-2 focus:ring-[#C5A044]"
+              value={editingOrder.city}
+              onChange={(e)=>setEditingOrder({...editingOrder, city:e.target.value})}
+              placeholder="City"
+            />
+
+            <div className="col-span-2 flex gap-3 mt-3">
+              <button className="flex-1 bg-green-600 text-white py-3 rounded">
+                Save
+              </button>
+
+              <button 
+                type="button"
+                onClick={()=>setEditingOrder(null)}
+                className="flex-1 bg-gray-600 text-white py-3 rounded"
+              >
+                Close
+              </button>
             </div>
-            <div>
-              <label>Price</label>
-              <input type="text" value={editingOrder.productPrice} onChange={(e) => setEditingOrder({...editingOrder, productPrice: e.target.value})} style={inputStyle} />
-            </div>
-            <div>
-              <label>Customer Name</label>
-              <input type="text" value={editingOrder.customerName} onChange={(e) => setEditingOrder({...editingOrder, customerName: e.target.value})} style={inputStyle} />
-            </div>
-            <div>
-              <label>Image Source</label>
-              <input type="text" value={editingOrder.productImage} onChange={(e) => setEditingOrder({...editingOrder, productImage: e.target.value})} style={inputStyle} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-              <button type="submit" style={saveBtn}>SAVE CHANGES</button>
-              <button type="button" onClick={() => setEditingOrder(null)} style={closeBtn}>CLOSE</button>
-            </div>
+
           </form>
         </div>
       )}
     </div>
   );
 };
-
-// --- Styles ---
-const singleCardStyle = { 
-  display: 'flex', 
-  maxWidth: '1000px', 
-  margin: '0 auto', 
-  background: '#fff', 
-  borderRadius: '16px', 
-  boxShadow: '0 20px 40px rgba(0,0,0,0.1)', 
-  overflow: 'hidden' 
-};
-
-const detailBox = { 
-  background: '#f9f9f9', 
-  padding: '20px', 
-  borderRadius: '8px', 
-  marginTop: '20px', 
-  lineHeight: '1.8',
-  fontSize: '14px'
-};
-
-const inputStyle = { width: '100%', padding: '10px', marginBottom: '10px', borderRadius: '4px', border: '1px solid #ddd' };
-
-const formContainer = {
-  maxWidth: '1000px', margin: '40px auto', padding: '30px', background: '#fff', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
-};
-
-const formStyle = { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' };
-
-const editBtn = { flex: 1, background: '#000', color: '#fff', border: 'none', padding: '15px', cursor: 'pointer', fontWeight: 'bold', borderRadius: '8px' };
-const cancelBtn = { flex: 1, background: '#fff', color: '#ff4d4d', border: '1px solid #ff4d4d', padding: '15px', cursor: 'pointer', fontWeight: 'bold', borderRadius: '8px' };
-const saveBtn = { flex: 1, background: '#28a745', color: '#fff', border: 'none', padding: '12px', borderRadius: '6px', cursor: 'pointer' };
-const closeBtn = { flex: 1, background: '#666', color: '#fff', border: 'none', padding: '12px', borderRadius: '6px', cursor: 'pointer' };
 
 export default Invoice;

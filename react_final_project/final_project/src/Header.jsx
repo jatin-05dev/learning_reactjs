@@ -48,17 +48,20 @@ function Header() {
           <span className="text-gray-700">|</span>
           <span className="text-lg cursor-pointer">♡</span>
           
-          {/* USER HAI TO HI CART DIKHEGA */}
           {user && (
-            <div className="relative cursor-pointer">
-              <span className="text-xl">👜</span>
-              {bagCount > 0 && (
-                <span className="absolute -top-1 -right-2 bg-red-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                  {bagCount}
-                </span>
-              )}
-            </div>
-          )}
+  <div 
+    onClick={() => navigate("/bag")}
+    className="relative cursor-pointer"
+  >
+    <span className="text-xl">👜</span>
+
+    {bagCount > 0 && (
+      <span className="absolute -top-1 -right-2 bg-red-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+        {bagCount}
+      </span>
+    )}
+  </div>
+)}
         </div>
       </div>
 
@@ -71,7 +74,7 @@ function Header() {
 
         <nav className="flex gap-6 text-[12px] font-bold uppercase text-gray-800">
           <Link to="/" className="hover:text-black">Home</Link>
-          <Link to="/new-in" className="text-red-700 hover:text-black">New In</Link>
+          <Link to="/new-in" className="hover:text-black">New In</Link>
           <Link to="/collections" className="hover:text-black">Collections</Link>
           <Link to="/premium" className="hover:text-black">Premium</Link>
           <Link to="/Myorder" className="hover:text-black">Myorder</Link>

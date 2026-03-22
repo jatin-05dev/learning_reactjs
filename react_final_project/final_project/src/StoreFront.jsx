@@ -37,7 +37,8 @@ const StoreFront = () => {
           Sign Up Now
         </button>
       </section>
-
+<br />
+<br />
       {/* Custom Utility Styles */}
       <style dangerouslySetInnerHTML={{__html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }

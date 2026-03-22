@@ -1,154 +1,69 @@
 {
   "orders": [
     {
-      "id": "faae",
+      "id": "638d",
       "customerName": "Jatin",
       "customerEmail": "jattfact@gmail.com",
       "productName": "Pink Solid Shirt",
       "productPrice": "2,625",
       "productImage": "k.webp",
-      "productId": 101,
-      "date": "3/15/2026, 5:54:03 PM"
+      "size": "M",
+      "address": "NEAR TIT COLLEGE",
+      "phone": "54",
+      "city": "Bhopal",
+      "date": "3/20/2026, 1:41:12 PM"
     },
     {
-      "id": "22a9",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Navy Stripe Shirt",
-      "productPrice": "2,625",
-      "productImage": "https://images.clothes.com/navy-shirt.jpg",
-      "productId": 103,
-      "date": "3/15/2026, 5:58:54 PM"
-    },
-    {
-      "id": "e582",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
+      "id": "13ea",
+      "customerName": "ANITA BAI",
+      "customerEmail": "diyyaa098@gmail.com",
       "productName": "Brown Lace Up Shoes",
       "productPrice": "5,999",
-      "productImage": "k.webp",
-      "productId": 102,
-      "date": "3/17/2026, 12:43:25 PM"
+      "productImage": "download.jpeg",
+      "size": "L",
+      "address": "NEAR TIT COLLEGE",
+      "phone": "58984",
+      "city": "Bhopal",
+      "date": "3/20/2026, 2:33:57 PM"
     },
     {
-      "id": "5b75",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Brown Lace Up Shoes",
-      "productPrice": "5,999",
-      "productImage": "k.webp",
-      "productId": 102,
-      "date": "3/17/2026, 12:43:46 PM"
-    },
-    {
-      "id": "25a0",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Brown Lace Up Shoes",
-      "productPrice": "5,999",
-      "productImage": "k.webp",
-      "productId": 102,
-      "date": "3/17/2026, 12:44:27 PM"
-    },
-    {
-      "id": "bc24",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Brown Lace Up Shoes",
-      "productPrice": "5,999",
-      "productImage": "k.webp",
-      "productId": 102,
-      "date": "3/17/2026, 12:44:51 PM"
-    },
-    {
-      "id": "28f9",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Brown Lace Up Shoes",
-      "productPrice": "5,999",
-      "productImage": "k.webp",
-      "productId": 102,
-      "date": "3/17/2026, 12:45:36 PM"
-    },
-    {
-      "id": "9d3c",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Brown Lace Up Shoes",
-      "productPrice": "5,999",
-      "productImage": "k.webp",
-      "productId": 102,
-      "date": "3/17/2026, 12:48:22 PM"
-    },
-    {
-      "id": "dae7",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Pink Solid Shirt",
-      "productPrice": "2,625",
-      "productImage": "k.webp",
-      "productId": 101,
-      "date": "3/17/2026, 12:48:31 PM"
-    },
-    {
-      "id": "3f45",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Pink Solid Shirt",
-      "productPrice": "2,625",
-      "productImage": "k.webp",
-      "productId": 101,
-      "date": "3/17/2026, 12:48:46 PM"
-    },
-    {
-      "id": "227c",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Pink Solid Shirt",
-      "productPrice": "2,625",
-      "productImage": "k.webp",
-      "productId": 101,
-      "date": "3/17/2026, 12:48:51 PM"
-    },
-    {
-      "id": "5176",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Pink Solid Shirt",
-      "productPrice": "2,625",
-      "productImage": "k.webp",
-      "productId": 101,
-      "date": "3/17/2026, 12:49:19 PM"
-    },
-    {
-      "id": "2c16",
-      "customerName": "Jatin",
-      "customerEmail": "jattfact@gmail.com",
-      "productName": "Pink Solid Shirt",
-      "productPrice": "2,625",
-      "productImage": "k.webp",
-      "productId": 101,
-      "date": "3/17/2026, 12:50:17 PM"
-    },
-    {
-      "id": "8523",
+      "id": "74f7",
       "customerName": "Jatin",
       "customerEmail": "jattfact@gmail.com",
       "productName": "Brown Lace Up Shoes",
       "productPrice": "5,999",
       "productImage": "download.jpeg",
-      "productId": 102,
-      "date": "3/17/2026, 1:04:35 PM"
+      "size": "M",
+      "address": "HATHAI KHEDA PATHAR",
+      "phone": "84",
+      "city": "near anand nagar",
+      "date": "3/20/2026, 2:46:12 PM"
     },
     {
-      "id": "1064",
-      "customerName": "Jatin",
+      "id": "f31a",
+      "customerName": "puju",
       "customerEmail": "jattfact@gmail.com",
-      "productName": "Brown Lace Up Shoes",
-      "productPrice": "5,999",
-      "productImage": "download.jpeg",
-      "productId": 102,
-      "date": "3/17/2026, 1:13:08 PM"
+      "productName": "Pink Solid Shirt",
+      "productPrice": "2,625",
+      "productImage": "https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=800",
+      "size": "M",
+      "address": "NEAR TIT COLLEGE",
+      "phone": "58",
+      "city": "Bhopal",
+      "date": "3/22/2026, 11:45:39 AM"
+    },
+    {
+      "id": "78c4",
+      "customerName": "puju",
+      "customerEmail": "jattfact@gmail.com",
+      "productName": "White Basic Tee",
+      "productPrice": "999",
+      "productImage": "https://images.unsplash.com/photo-1520975954732-35dd22299614?q=80&w=800",
+      "size": "M",
+      "address": "NEAR TIT COLLEGE",
+      "phone": "85",
+      "city": "Bhopal",
+      "date": "3/22/2026, 11:53:45 AM"
     }
   ]
 }

@@ -34,7 +34,7 @@ const Myorder = () => {
             <div key={order.id} style={orderCard}>
               {/* Product Image */}
               <img 
-                src={`/${order.productImage}`} 
+                src={order.productImage} 
                 alt="product" 
                 style={{ width: '120px', height: '140px', objectFit: 'cover', borderRadius: '8px' }}
                 onError={(e) => e.target.src = "https://via.placeholder.com/120x140?text=No+Image"}

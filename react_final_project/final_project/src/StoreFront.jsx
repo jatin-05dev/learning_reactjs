@@ -1,6 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const StoreFront = () => {
+
+ let navigate=useNavigate()
+
+ function cha(){
+    navigate("/Sign")
+
+ }
   return (
     <div className="w-full bg-white font-sans text-gray-900">
       
@@ -33,7 +41,7 @@ const StoreFront = () => {
             <p className="text-[10px] text-gray-400">Invite your friends and earn up to ₹ 7500 in discounts.</p>
           </div>
         </div>
-        <button className="bg-white text-black text-[10px] font-bold px-8 py-3 tracking-widest uppercase hover:bg-gray-200">
+        <button onClick={cha} className="bg-white text-black text-[10px] font-bold px-8 py-3 tracking-widest uppercase hover:bg-gray-200">
           Sign Up Now
         </button>
       </section>

@@ -46,12 +46,12 @@ function App() {
           <Route path="new-in" element={<NewIn />} />
           <Route path="Sign" element={<SignUp />} />
           <Route path="login" element={<Login />} />
-          <Route path="/productDetail/:id" element={<ProductDetail />} />
+          <Route path="productDetail/:id" element={<ProductDetail />} />
           <Route path="Invoice" element={<Invoice />} />
           <Route path="collections" element={<Collections />} />
           <Route path="Myorder" element={<Myorder />} />
           <Route path="premium" element={<PremiumBrandLanding />} />
-          <Route path="/bag" element={<Bag />} />
+          <Route path="bag" element={<Bag />} />
         </Route>
       </Routes>
     </Router>

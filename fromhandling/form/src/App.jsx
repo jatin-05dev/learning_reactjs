@@ -9,13 +9,13 @@ import Form from "./Form"
         setfrm(e.target.value)
         
       }
-
+     
       function submit(e) {
         // return false
         e.preventDefault()
         console.log(frmdata,frmdata1,frmdata2);
         
-        
+
       }
   return (
     <>

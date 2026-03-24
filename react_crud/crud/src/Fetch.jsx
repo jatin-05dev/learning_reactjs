@@ -1,4 +1,4 @@
- import axios  from 'axios'
+import axios  from 'axios'
 import { useEffect, useState } from 'react'
 function Fetch(){
   let [apidata,set]=useState([])
@@ -14,7 +14,7 @@ useEffect(()=>{
 function delet(id) {
   axios.delete(`http://localhost:3000/userdata/${id}`)
     .then((res) => {
-      alert("Data Deleted Successfully");
+      alert("Data Deleted Successfully")
       // Fetch()   
     })
     .catch((err) => {

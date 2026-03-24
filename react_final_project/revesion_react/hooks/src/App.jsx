@@ -11,7 +11,7 @@ const [color, setColor] = useState("black");
   // useEffect(()=>alert("cybrom...."))
   useEffect(()=>alert("cybrom...."),[color])
 function inc(){
-set("puju hotty")
+set("puju")
 }
 function un(){
   setn(num++)

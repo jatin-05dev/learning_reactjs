@@ -8,7 +8,7 @@ function Sign(){
         age: "",
         password: ""
     })
-
+        
     const navigate = useNavigate()
 
     function inputdata(e){

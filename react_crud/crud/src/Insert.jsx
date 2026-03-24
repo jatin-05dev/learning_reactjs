@@ -18,7 +18,6 @@ function Insert() {
 
   function submit(e) {
     e.preventDefault()
-
     axios.post("http://localhost:3000/userdata", frmdata)
       .then(() => alert("Success..."))
       nav('./Fetch')

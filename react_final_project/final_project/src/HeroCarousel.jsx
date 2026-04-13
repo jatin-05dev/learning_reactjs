@@ -3,6 +3,8 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from "framer-motion"
+import { useNavigate } from "react-router-dom"
+
 
 const slides = [
   {
@@ -22,7 +24,6 @@ const slides = [
   }
 ]
 
-/* ================= TYPEWRITER ================= */
 const Typewriter = ({ text, speed = 50 }) => {
   const [displayText, setDisplayText] = useState("")
 
@@ -41,9 +42,10 @@ const Typewriter = ({ text, speed = 50 }) => {
 
   return <span>{displayText}</span>
 }
-
-/* ================= MAIN COMPONENT ================= */
+ 
 export const HeroCarousel = () => {
+
+    const navigate = useNavigate()
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
@@ -67,23 +69,19 @@ export const HeroCarousel = () => {
   return (
     <div className="relative w-full h-[600px]">
 
-      {/* Carousel */}
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
           {slides.map((slide, index) => (
             <div className="relative flex-[0_0_100%] h-full" key={index}>
               
-              {/* Image */}
               <img 
                 src={slide.image} 
                 alt={slide.title}
                 className="w-full h-full object-cover"
               />
 
-              {/* Overlay */}
               <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white text-center">
 
-                {/* TITLE TYPEWRITER */}
                 <motion.h2 
                   key={slide.title}
                   initial={{ opacity: 0, y: -40 }}
@@ -94,7 +92,6 @@ export const HeroCarousel = () => {
                   <Typewriter text={slide.title} speed={60} />
                 </motion.h2>
 
-                {/* SUBTITLE TYPEWRITER */}
                 <motion.p 
                   key={slide.subtitle}
                   initial={{ opacity: 0 }}
@@ -105,14 +102,13 @@ export const HeroCarousel = () => {
                   <Typewriter text={slide.subtitle} speed={30} />
                 </motion.p>
 
-                {/* BUTTON */}
                 <motion.button 
                   initial={{ opacity: 0, scale: 0.7 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1 }}
                   className="border px-8 py-2 hover:bg-white hover:text-black transition"
                 >
-                  SHOP NOW
+                   <button onClick={()=>navigate("new-in")} >Shop_now</button>
                 </motion.button>
 
               </div>
@@ -122,7 +118,6 @@ export const HeroCarousel = () => {
         </div>
       </div>
 
-      {/* Prev */}
       <button 
         className="absolute left-4 top-1/2 -translate-y-1/2 text-white z-10"
         onClick={scrollPrev}
@@ -130,7 +125,6 @@ export const HeroCarousel = () => {
         <ChevronLeft size={40} />
       </button>
 
-      {/* Next */}
       <button 
         className="absolute right-4 top-1/2 -translate-y-1/2 text-white z-10"
         onClick={scrollNext}

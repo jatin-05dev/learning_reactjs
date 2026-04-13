@@ -15,7 +15,6 @@ function Login() {
         e.preventDefault()
         let localdata = JSON.parse(localStorage.getItem("userdata"))
         
-        // Safety check if localdata exists
         if (!localdata) { 
              toast('plase sign up first',{
     type:"error",
@@ -40,7 +39,6 @@ function Login() {
         <div className="min-h-screen bg-[#fcfcfc] flex items-center justify-center p-6">
             <div className="max-w-md w-full bg-white p-10 shadow-sm border border-gray-100 transition-all">
                 
-                {/* Brand Logo Header */}
                 <div className="text-center mb-12">
                     <h1 className="text-3xl tracking-[0.4em] font-serif text-black uppercase">
                         Louis Philippe
@@ -55,7 +53,6 @@ function Login() {
                 </h2>
 
                 <form onSubmit={logins} className="space-y-8">
-                    {/* Email Input */}
                     <div className="relative">
                         <input 
                             type="email" 
@@ -68,7 +65,6 @@ function Login() {
                         />
                     </div>
 
-                    {/* Password Input */}
                     <div className="relative">
                         <input 
                             type="password" 
@@ -87,7 +83,6 @@ function Login() {
                         </button>
                     </div>
 
-                    {/* Submit Button */}
                     <button 
                         type="submit" 
                         className="w-full bg-black text-white py-4 mt-4 text-xs tracking-[0.3em] font-bold hover:bg-[#222] transition-all active:scale-[0.98]"

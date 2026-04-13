@@ -59,7 +59,6 @@ function handle(e) {
         <div className="min-h-screen bg-[#f8f8f8] flex items-center justify-center p-6">
             <div className="max-w-md w-full bg-white p-10 shadow-sm border border-gray-100 transition-all hover:shadow-md">
                 
-                {/* Brand Logo Header */}
                 <div className="text-center mb-10">
                     <h1 className="text-3xl tracking-[0.4em] font-serif text-black uppercase leading-none">
                         Louis Philippe
@@ -74,7 +73,6 @@ function handle(e) {
                 </h2>
 
                 <form onSubmit={handle} className="space-y-6">
-                    {/* Name Input */}
                     <div className="relative">
                         <input 
                             type="text" 
@@ -87,7 +85,6 @@ function handle(e) {
                         />
                     </div>
 
-                    {/* Email Input */}
                     <div className="relative">
                         <input 
                             type="email" 
@@ -100,7 +97,6 @@ function handle(e) {
                         />
                     </div>
 
-                    {/* Age Input */}
                     <div className="relative">
                         <input 
                             type="number" 
@@ -113,7 +109,6 @@ function handle(e) {
                         />
                     </div>
 
-                    {/* Password Input */}
                     <div className="relative">
                         <input 
                             type="password" 
@@ -126,7 +121,6 @@ function handle(e) {
                         />
                     </div>
 
-                    {/* Submit Button */}
                     <button 
                         type="submit" 
                         className="w-full bg-black text-white py-4 mt-4 text-xs tracking-[0.3em] font-bold hover:bg-[#222] transition-all active:scale-[0.98]"

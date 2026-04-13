@@ -13,7 +13,6 @@ const StoreFront = () => {
     <div className="w-full bg-white font-sans text-gray-900">
       
      
-      {/* 4. SERVICE INFO (Image 4 top) */}
       <section className="bg-gray-900 text-white py-12 px-6 flex flex-wrap justify-around text-center gap-8">
         <div className="flex flex-col items-center max-w-[200px]">
           <div className="mb-4 text-3xl">📦</div>
@@ -32,7 +31,6 @@ const StoreFront = () => {
 
 <br /><br />
 <br /><br />
-      {/* 5. REFERRAL STRIP (Image 4 bottom) */}
       <section className="bg-[#222] py-6 px-6 border-t border-gray-700 flex flex-col md:flex-row items-center justify-center gap-6">
         <div className="flex items-center gap-4 text-white">
           <div className="text-yellow-500 text-3xl">🎁</div>
@@ -47,7 +45,6 @@ const StoreFront = () => {
       </section>
 <br />
 <br />
-      {/* Custom Utility Styles */}
       <style dangerouslySetInnerHTML={{__html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

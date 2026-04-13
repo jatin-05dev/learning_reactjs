@@ -1,7 +1,6 @@
  import React, { useState } from 'react';
 import { motion } from "framer-motion";
 
-// IMAGES
 const images1 = [
   'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=800',
   'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800',
@@ -38,7 +37,6 @@ const categories = [
   'CARGOS'
 ];
 
-// 🔥 CARD WITH TEXT ANIMATION
 const CategoryCard = ({ name, img }) => {
   const [hover, setHover] = useState(false);
 
@@ -53,7 +51,6 @@ const CategoryCard = ({ name, img }) => {
       onMouseLeave={() => setHover(false)}
     >
 
-      {/* IMAGE */}
       <motion.img
         src={img}
         className="w-full h-full object-cover"
@@ -64,10 +61,8 @@ const CategoryCard = ({ name, img }) => {
         transition={{ duration: 0.4 }}
       />
 
-      {/* OVERLAY */}
       <div className="absolute inset-0 flex flex-col items-center justify-end pb-6">
 
-        {/* 🔥 TEXT LETTER ANIMATION */}
         <div className="flex gap-[2px]">
           {name.split("").map((char, i) => (
             <motion.span
@@ -83,7 +78,6 @@ const CategoryCard = ({ name, img }) => {
           ))}
         </div>
 
-        {/* BUTTON */}
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: hover ? 1 : 0, y: hover ? 0 : 20 }}
@@ -99,7 +93,6 @@ const CategoryCard = ({ name, img }) => {
   );
 };
 
-// 🔥 SECTION
 const CategorySection = ({ title, images }) => {
   return (
     <section className="py-14 px-4 md:px-12">
@@ -125,7 +118,6 @@ const CategorySection = ({ title, images }) => {
   );
 };
 
-// 🔥 MAIN
 const CombinedStoreFront = () => {
   return (
     <div>

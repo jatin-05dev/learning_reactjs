@@ -27,7 +27,6 @@ const Invoice = () => {
     }
   };
 
-  // ❌ DELETE
   const handleDelete = async (id) => {
     await axios.delete(`${API_URL}/${id}`);
 
@@ -36,7 +35,6 @@ const Invoice = () => {
     navigate("/");
   };
 
-  // ✏️ UPDATE
   const handleUpdate = async (e) => {
     e.preventDefault();
 
@@ -57,15 +55,12 @@ const Invoice = () => {
   return (
     <div className="min-h-screen bg-[#f4f4f4] py-10 px-5">
 
-      {/* HEADER */}
       <h1 className="text-center text-4xl font-bold mb-10 tracking-wide">
         🧾 INVOICE
       </h1>
 
-      {/* MAIN CARD */}
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden flex">
 
-        {/* IMAGE */}
         <div className="w-1/2 bg-black">
           <img 
             src={lastOrder.productImage} 
@@ -74,7 +69,6 @@ const Invoice = () => {
           />
         </div>
 
-        {/* DETAILS */}
         <div className="w-1/2 p-10 flex flex-col justify-center">
 
           <p className="text-[#C5A044] font-bold tracking-wide">
@@ -89,7 +83,6 @@ const Invoice = () => {
             ₹ {lastOrder.productPrice}
           </p>
 
-          {/* DETAILS BOX */}
           <div className="bg-gray-50 p-5 rounded-lg mt-6 text-sm leading-7">
             <p><b>Order ID:</b> {lastOrder.id}</p>
             <p><b>Name:</b> {lastOrder.customerName}</p>
@@ -100,7 +93,6 @@ const Invoice = () => {
             <p><b>Date:</b> {lastOrder.date}</p>
           </div>
 
-          {/* BUTTONS */}
           <div className="flex gap-4 mt-6">
 
             <button 
@@ -119,7 +111,6 @@ const Invoice = () => {
 
           </div>
 
-          {/* PRINT */}
           <button 
             onClick={() => window.print()}
             className="mt-4 bg-[#C5A044] text-white py-3 rounded-lg font-bold hover:bg-[#a38330]"
@@ -130,7 +121,6 @@ const Invoice = () => {
         </div>
       </div>
 
-      {/* EDIT FORM */}
       {editingOrder && (
         <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-2xl shadow-lg">
 

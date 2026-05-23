@@ -1,0 +1,21 @@
+<h1>Billing Invoice</h1>
+
+<h1><center style="color: aqua;">Cybrom Technology Pvt Ltd </center></h1>
+<table border="1" align="center">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>DOB</th>
+    </tr>
+    {% for i in records %}
+    <tr>
+        <td align="center">{{i.id}}</td>
+        <td align="center">{{i.name}}</td>
+        <td align="center">{{i.email}}</td>
+        <td align="center">{{i.contact}}</td>
+        <td align="center">{{i.dob}}</td>
+    </tr>
+    {% endfor %}
+</table>

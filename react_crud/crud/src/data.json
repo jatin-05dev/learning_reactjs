@@ -1,0 +1,25 @@
+{
+  "userdata": [
+    {
+      "id": "fbc9",
+      "name": "ANITA",
+      "age": "21",
+      "city": "Bhopal",
+      "contact": "7000465192"
+    },
+    {
+      "id": "879d",
+      "name": "DIYA NA",
+      "age": "nife",
+      "city": "Bhopal",
+      "contact": "7000465192"
+    },
+    {
+      "id": "f185",
+      "name": "Jatin",
+      "age": "21",
+      "city": "Bhopal",
+      "contact": "8464"
+    }
+  ]
+}

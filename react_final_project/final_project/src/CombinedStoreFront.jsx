@@ -37,9 +37,15 @@ const categories = [
   'CARGOS'
 ];
 
+
+
+
+
 const CategoryCard = ({ name, img }) => {
   const [hover, setHover] = useState(false);
 
+
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
